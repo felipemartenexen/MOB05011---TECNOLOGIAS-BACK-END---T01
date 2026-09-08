@@ -1,0 +1,87 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-09-07T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v8",
+  "resources": [
+    {
+      "_id": "wrk_catalogo_produtos",
+      "_type": "workspace",
+      "parentId": null,
+      "name": "Catalogo de Produtos API",
+      "description": "Tarefa Avaliativa - API + Banco de Dados com Docker, PostgreSQL e Prisma",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_catalogo_base",
+      "_type": "environment",
+      "parentId": "wrk_catalogo_produtos",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3000",
+        "product_id": 1
+      },
+      "dataPropertyOrder": {
+        "&": ["base_url", "product_id"]
+      },
+      "metaSortKey": 1,
+      "isPrivate": false
+    },
+    {
+      "_id": "req_status",
+      "_type": "request",
+      "parentId": "wrk_catalogo_produtos",
+      "name": "GET / (status da API)",
+      "description": "Retorna { \"status\": \"ok\" }",
+      "method": "GET",
+      "url": "{{ _.base_url }}/",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -3
+    },
+    {
+      "_id": "req_products_list",
+      "_type": "request",
+      "parentId": "wrk_catalogo_produtos",
+      "name": "GET /products (lista todos)",
+      "description": "Retorna a lista completa de produtos persistidos no PostgreSQL",
+      "method": "GET",
+      "url": "{{ _.base_url }}/products",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -2
+    },
+    {
+      "_id": "req_products_by_id",
+      "_type": "request",
+      "parentId": "wrk_catalogo_produtos",
+      "name": "GET /products/:id (por id)",
+      "description": "Retorna um produto pelo id. Id inexistente responde 404 com JSON informativo.",
+      "method": "GET",
+      "url": "{{ _.base_url }}/products/{{ _.product_id }}",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1
+    },
+    {
+      "_id": "req_products_404",
+      "_type": "request",
+      "parentId": "wrk_catalogo_produtos",
+      "name": "GET /products/9999 (teste de 404)",
+      "description": "Valida o tratamento de erro para id inexistente",
+      "method": "GET",
+      "url": "{{ _.base_url }}/products/9999",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 0
+    }
+  ]
+}
